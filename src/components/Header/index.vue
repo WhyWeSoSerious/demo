@@ -7,8 +7,8 @@
           <p>尚品汇欢迎您！</p>
           <p>
             <span>请</span>
-            <a href="###">登录</a>
-            <a href="###" class="register">免费注册</a>
+            <router-link to="/login">登陆</router-link>
+            <router-link class="register" to="/register">免费注册</router-link>
           </p>
         </div>
         <div class="typeList">
@@ -26,18 +26,24 @@
     <!--头部第二行 搜索区域-->
     <div class="bottom">
       <h1 class="logoArea">
-        <a class="logo" title="尚品汇" href="###" target="_blank">
+        <router-link class="logo" to="/">
           <img src="./image/logo.png" alt="" />
-        </a>
+        </router-link>
       </h1>
       <div class="searchArea">
         <form action="###" class="searchForm">
           <input
+            v-model="keyword"
             type="text"
             id="autocomplete"
+            placeholder="请输入关键字"
             class="input-error input-xxlarge"
           />
-          <button class="sui-btn btn-xlarge btn-danger" type="button">
+          <button
+            class="sui-btn btn-xlarge btn-danger"
+            type="button"
+            @click="seacrh"
+          >
             搜索
           </button>
         </form>
@@ -49,8 +55,30 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      keyword: "",
+    };
+  },
+  methods: {
+    //todo 发送搜索的给搜索的路由
+    seacrh() {
+      if (this.keyword.trim()) {
+        this.$router.push({
+          name: "search",
+          params: { keyword: this.keyword },
+        });
+      } else {
+        alert("请输入有效的内容");
+      }
+      this.keyword = "";
+    },
+  },
 };
 </script>
+
+
+
 
 <style lang="less" scoped>
 .header {
