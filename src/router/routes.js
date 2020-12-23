@@ -19,7 +19,7 @@ export default [
         path: '/register',
         component: Register,
         meta: {
-            isHideFooter: true
+            isShow: true
         }
     },
 
@@ -27,7 +27,7 @@ export default [
         path: '/login',
         component: Login,
          meta: {
-             isHideFooter: true
+             isShow: true
         }
     }
 ]

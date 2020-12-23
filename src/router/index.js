@@ -2,6 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
 Vue.use(VueRouter);
+
+
+
+//todo解决路由重复跳转的问题
 const originPush = VueRouter.prototype.push
 const originReplace = VueRouter.prototype.replace
 // 给原型对象上的push指定新函数函数
@@ -21,6 +25,10 @@ VueRouter.prototype.replace = function (location, onComplete, onAbort) {
         originReplace.call(this, location, onComplete, onAbort)
     }
 }
+
+
+
+//todo暴露并引入路由信息对象
 export default new VueRouter({
     mode: 'history', // 没有#的模式
     routes, // 注册所有路由
