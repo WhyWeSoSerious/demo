@@ -66,8 +66,8 @@ export default {
       if (this.keyword.trim()) {
         this.$router.push({
           name: "search",
-          params: { keywor6d: this.keyword },
-          query: { keyword2: this.keyword },
+          params: { keyword: this.keyword },
+          query: this.$route.query,
         });
       } else {
         alert("请输入有效的内容");
