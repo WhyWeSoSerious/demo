@@ -18,6 +18,8 @@ export default {
   },
   mounted(){
     this.$store.dispatch('getCategoryList')
+    //todo 轮播
+    this.$store.dispatch('getBannerList')
   }
 }
 </script>

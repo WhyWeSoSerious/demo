@@ -106,7 +106,7 @@ export default {
       function (index) {
         this.currentIndex = index;
       },
-      500
+      300
     ),
 
     /* 

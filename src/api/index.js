@@ -1,8 +1,8 @@
 import ajax from './ajax'
-export default function reqCategoryList() {
+export  function reqCategoryList() {
     return ajax({
         url: '/product/getBaseCategoryList'
     })
 }
-    
-   
+export const reqBannerList = () => ajax('/cms/banner')
+
