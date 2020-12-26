@@ -69,6 +69,8 @@
 </template>
 
 <script>
+import Swiper from 'swiper'
+import 'swiper/css/swiper.css'
 // import _ from 'lodash'
 import throttle from "lodash/throttle";
 import { mapState } from "vuex";
@@ -86,6 +88,7 @@ export default {
   computed: {
     ...mapState({
       categoryList: (state) => state.home.categoryList,
+      bannerList: state => state.home.bannerList
     }),
   },
 
@@ -146,6 +149,30 @@ export default {
       }
     },
   },
+    watch: {
+      // 当bannerList变化, 也就是有数据后才回调
+      bannerList () {
+        // 当轮播列表界面显示之后才执行回调
+        this.$nextTick(() => {
+          // swiper对象必须在列表界面显示之后创建才有效
+          new Swiper(this.$refs.mySwiper, {
+            loop: true, // 循环模式选项
+            autoplay: { // 自动轮播
+              disableOnInteraction: false, // 用户操作后, 恢复自动轮播
+            }, 
+            // 如果需要分页器
+            pagination: {
+              el: '.swiper-pagination',
+            },
+            // 如果需要前进后退按钮
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+          })
+        })
+      }
+    },
 };
 </script>
 
